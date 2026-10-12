@@ -1,0 +1,119 @@
+/* ===== 主题变量 ===== */
+:root, :root[data-theme="light"] {
+  --bg:#ffffff; --bg2:#f4f7f6; --fg:#262b2a; --fg2:#5b6665; --line:#dfe6e4;
+  --accent:#1f6f5c; --link:#1f6f5c; --en:#0b5fa5; --strong:#9a3b00; --code-bg:#f1f4f3;
+  --th:#e3f0ec; --quote:#f1f8f5; --bad:#c62828; --badbg:#fdeaea; --good:#1b7a3a; --goodbg:#e8f6ec;
+  --mark:#fff3b0; --sidebar:#fafcfb;
+}
+:root[data-theme="sepia"] {
+  --bg:#f6efdc; --bg2:#efe6cb; --fg:#3b3226; --fg2:#6f6149; --line:#dccfae;
+  --accent:#7a5a1e; --link:#7a5a1e; --en:#1d4e7a; --strong:#8a2f10; --code-bg:#ebe1c4;
+  --th:#e8dcb8; --quote:#efe5c8; --bad:#a82020; --badbg:#f3dcd0; --good:#2c6b2c; --goodbg:#dfe6c4;
+  --mark:#f3dd8a; --sidebar:#f0e7cd;
+}
+:root[data-theme="dark"] {
+  --bg:#1a1c1e; --bg2:#232628; --fg:#dedede; --fg2:#a3abab; --line:#3a3f42;
+  --accent:#5fd0b0; --link:#5fd0b0; --en:#7cc4f5; --strong:#ffb77a; --code-bg:#262a2c;
+  --th:#26332f; --quote:#1f2b28; --bad:#ff8a80; --badbg:#3a2224; --good:#7ee0a0; --goodbg:#1f3328;
+  --mark:#5a4c10; --sidebar:#17191a;
+}
+:root[data-theme="hc"] {           /* 高对比：纯白底纯黑字 */
+  --bg:#ffffff; --bg2:#f0f0f0; --fg:#000000; --fg2:#222222; --line:#000000;
+  --accent:#00378a; --link:#00378a; --en:#0035b0; --strong:#b00000; --code-bg:#ececec;
+  --th:#d6e4ff; --quote:#f2f2f2; --bad:#b00000; --badbg:#ffe0e0; --good:#006400; --goodbg:#d9f5d9;
+  --mark:#ffe600; --sidebar:#ffffff;
+}
+:root[data-theme="hcdark"] {       /* 高对比：纯黑底亮字 */
+  --bg:#000000; --bg2:#101010; --fg:#ffffff; --fg2:#e0e0e0; --line:#ffffff;
+  --accent:#ffd400; --link:#7fdcff; --en:#7fdcff; --strong:#ffd400; --code-bg:#161616;
+  --th:#1d2a44; --quote:#101010; --bad:#ff7b7b; --badbg:#3a0000; --good:#7dff9b; --goodbg:#003a12;
+  --mark:#6b5a00; --sidebar:#000000;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg:#1a1c1e; --bg2:#232628; --fg:#dedede; --fg2:#a3abab; --line:#3a3f42;
+    --accent:#5fd0b0; --link:#5fd0b0; --en:#7cc4f5; --strong:#ffb77a; --code-bg:#262a2c;
+    --th:#26332f; --quote:#1f2b28; --bad:#ff8a80; --badbg:#3a2224; --good:#7ee0a0; --goodbg:#1f3328;
+    --mark:#5a4c10; --sidebar:#17191a;
+  }
+}
+:root { --fs: 18px; --lh: 1.9; --theme-color: var(--accent); }
+
+/* ===== 基础 ===== */
+html, body { background: var(--bg); color: var(--fg); }
+body { font-family: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC","Hiragino Sans GB",sans-serif; }
+.content { background: var(--bg); }
+.markdown-section { max-width: 860px; color: var(--fg); font-size: var(--fs); line-height: var(--lh); }
+.markdown-section p, .markdown-section li { line-height: var(--lh); }
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5 { color: var(--fg) !important; line-height: 1.4; }
+.markdown-section h1 { border-bottom: 3px solid var(--accent); padding-bottom: .3em; }
+.markdown-section h2 { margin-top: 2.2em; padding-left: .55em; border-left: 6px solid var(--accent); border-bottom: 0; }
+.markdown-section h3 { color: var(--accent) !important; }
+.markdown-section a { color: var(--link); }
+.markdown-section hr { border-top: 1px solid var(--line); }
+
+/* 重点着色：英文例句(斜体)、加粗要点 */
+body.hl .markdown-section em { color: var(--en); font-style: normal; font-weight: 600; }
+body.hl .markdown-section strong { color: var(--strong); }
+body:not(.hl) .markdown-section em { font-style: italic; color: inherit; }
+body:not(.hl) .markdown-section strong { color: inherit; }
+
+/* 对错标记 */
+.markdown-section .bad { color: var(--bad); font-weight: 800; }
+.markdown-section .good { color: var(--good); font-weight: 800; }
+.markdown-section em.wrong-ex { color: var(--bad) !important; background: var(--badbg); padding: 0 .25em; border-radius: 3px; text-decoration: line-through; text-decoration-thickness: 1px; }
+.markdown-section em.right-ex { color: var(--good) !important; background: var(--goodbg); padding: 0 .25em; border-radius: 3px; }
+
+/* 引用、代码、表格 */
+.markdown-section blockquote { color: var(--fg); background: var(--quote); border-left: 5px solid var(--accent); border-radius: 0 6px 6px 0; }
+.markdown-section code { background: var(--code-bg); color: var(--fg); }
+.markdown-section pre { background: var(--code-bg); border: 1px solid var(--line); border-radius: 6px; }
+.markdown-section pre > code { color: var(--fg); background: transparent; font-size: calc(var(--fs) * .84); line-height: 1.65; }
+.markdown-section table { display: table; width: 100%; border-collapse: collapse; font-size: calc(var(--fs) * .9); }
+.markdown-section th { background: var(--th); color: var(--fg); }
+.markdown-section th, .markdown-section td { border: 1px solid var(--line); padding: .5em .7em; }
+.markdown-section tr { background: var(--bg); border-top: 1px solid var(--line); }
+.markdown-section tr:nth-child(2n) { background: var(--bg2); }
+.markdown-section td, .markdown-section th { color: var(--fg); }
+@media (max-width: 760px) { .markdown-section table { display: block; overflow-x: auto; } }
+
+/* 答案折叠 */
+details { background: var(--bg2); border: 1px solid var(--line); border-radius: 8px; padding: .5em 1em; margin: 1.2em 0; }
+summary { cursor: pointer; color: var(--accent); font-weight: 700; }
+
+/* 侧栏、搜索 */
+.sidebar { background: var(--sidebar); color: var(--fg); border-right: 1px solid var(--line); }
+.sidebar ul li a { color: var(--fg2); font-size: 15px; }
+.sidebar ul li.active > a, .sidebar ul li a:hover { color: var(--accent); border-right: 2px solid var(--accent); }
+.app-name-link, .sidebar .app-name { color: var(--fg); }
+.sidebar-toggle { background: transparent; }
+.sidebar-toggle span { background-color: var(--accent); }
+.sidebar input, .search input { background: var(--bg) !important; color: var(--fg); border: 1px solid var(--line); }
+.search .results-panel, .search .matching-post { color: var(--fg); }
+.search a:hover { color: var(--accent); }
+.search h2 { color: var(--accent); font-size: 14px; }
+.search .matching-post { border-bottom-color: var(--line); }
+.search .search-keyword { color: var(--strong); background: var(--mark); font-style: normal; }
+.markdown-section pre, .markdown-section code { font-family: "Cascadia Mono","Consolas","Sarasa Mono SC","Noto Sans Mono CJK SC","Microsoft YaHei",monospace; }
+.docsify-copy-code-button { background: var(--accent) !important; color: var(--bg) !important; }
+
+/* 阅读进度条 */
+#rd-progress { position: fixed; top: 0; left: 0; height: 4px; width: 0; background: var(--accent); z-index: 9999; transition: width .1s; }
+
+/* 阅读设置面板 */
+#rd-fab { position: fixed; right: 18px; bottom: 18px; z-index: 9998; width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--accent);
+  background: var(--bg); color: var(--accent); font-size: 18px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.25); }
+#rd-panel { position: fixed; right: 18px; bottom: 74px; z-index: 9998; width: 290px; max-width: calc(100vw - 36px); background: var(--bg); color: var(--fg);
+  border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; box-shadow: 0 6px 24px rgba(0,0,0,.3); font-size: 14px; display: none; line-height: 1.5; }
+#rd-panel.open { display: block; }
+#rd-panel .row { margin: 10px 0; }
+#rd-panel .lab { color: var(--fg2); margin-bottom: 6px; font-size: 13px; }
+#rd-panel .btns { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+#rd-panel button { font: inherit; border: 1px solid var(--line); background: var(--bg2); color: var(--fg); border-radius: 8px; padding: 6px 11px; cursor: pointer; min-width: 40px; }
+#rd-panel button.on { border-color: var(--accent); background: var(--accent); color: var(--bg); font-weight: 700; }
+#rd-panel .val { min-width: 54px; text-align: center; font-weight: 700; }
+#rd-panel .sw { padding: 6px 9px; }
+
+/* 标题里的锚点链接沿用标题颜色 */
+.markdown-section a.anchor, .markdown-section a.anchor span { color: inherit !important; }
+.markdown-section h3 a.anchor, .markdown-section h3 a.anchor span { color: var(--accent) !important; }
